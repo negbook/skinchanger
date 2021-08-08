@@ -1,5 +1,5 @@
 Config = {}
-Config.Locale = 'en'
+Config.Locale = 'zh-mo'
 
 pedList={
 	'u_m_m_jesus_01',
