@@ -304,7 +304,7 @@ end)
 RegisterNetEvent('skinchanger:loadSkin')
 AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 
-  local playerPed = PlayerPedId()
+  
   local characterModel
     
   if skin['sex'] ~= LastSex then
@@ -341,7 +341,8 @@ AddEventHandler('skinchanger:loadSkin', function(skin, cb)
     end
 
     if IsModelInCdimage(characterModel) and IsModelValid(characterModel) then
-      SetPlayerModel(PlayerId(), characterModel)
+      SetPlayerModel(PlayerId(), characterModel) --new ped id 
+	  local playerPed = PlayerPedId()
       SetPedDefaultComponentVariation(playerPed)
     end
 
@@ -355,7 +356,6 @@ end)
 RegisterNetEvent('skinchanger:loadClothes')
 AddEventHandler('skinchanger:loadClothes', function(playerSkin, clothesSkin)
 
-  local playerPed = PlayerPedId()
   local characterModel    
     
   if playerSkin['sex'] ~= LastSex then
@@ -389,7 +389,8 @@ AddEventHandler('skinchanger:loadClothes', function(playerSkin, clothesSkin)
     end
 
     if IsModelInCdimage(characterModel) and IsModelValid(characterModel) then
-      SetPlayerModel(PlayerId(), characterModel)
+      SetPlayerModel(PlayerId(), characterModel) -- new ped id 
+	  local playerPed = PlayerPedId()
       SetPedDefaultComponentVariation(playerPed)
     end
 
