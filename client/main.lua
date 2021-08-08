@@ -62,7 +62,7 @@ end
 
 function LoadDefaultModel(malePed, cb)
 
-  local playerPed = GetPlayerPed(-1)
+  
   local characterModel
 
   if malePed then
@@ -81,7 +81,8 @@ function LoadDefaultModel(malePed, cb)
     end
 
     if IsModelInCdimage(characterModel) and IsModelValid(characterModel) then
-      SetPlayerModel(PlayerId(), characterModel)
+      SetPlayerModel(PlayerId(), characterModel) -- new ped id 
+	  local playerPed = PlayerPedId()
       SetPedDefaultComponentVariation(playerPed)
     end
 
@@ -99,7 +100,7 @@ end
 
 function GetMaxVals()
 
-  local playerPed = GetPlayerPed(-1)
+  local playerPed = PlayerPedId()
 
   local data = {
     sex           = 332,
@@ -160,7 +161,7 @@ end
 
 function ApplySkin(skin, clothes)
 
-  local playerPed = GetPlayerPed(-1)
+  local playerPed = PlayerPedId()
 
   for k,v in pairs(skin) do
     Character[k] = v
@@ -282,7 +283,7 @@ end)
 
 AddEventHandler('skinchanger:modelLoaded', function()
 
-  ClearPedProp(GetPlayerPed(-1), 0)
+  ClearPedProp(PlayerPedId(), 0)
 
   if LoadSkin ~= nil then
 
@@ -303,7 +304,7 @@ end)
 RegisterNetEvent('skinchanger:loadSkin')
 AddEventHandler('skinchanger:loadSkin', function(skin, cb)
 
-  local playerPed = GetPlayerPed(-1)
+  local playerPed = PlayerPedId()
   local characterModel
     
   if skin['sex'] ~= LastSex then
@@ -354,7 +355,7 @@ end)
 RegisterNetEvent('skinchanger:loadClothes')
 AddEventHandler('skinchanger:loadClothes', function(playerSkin, clothesSkin)
 
-  local playerPed = GetPlayerPed(-1)
+  local playerPed = PlayerPedId()
   local characterModel    
     
   if playerSkin['sex'] ~= LastSex then
