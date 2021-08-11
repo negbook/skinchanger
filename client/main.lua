@@ -61,10 +61,7 @@ for i=1, #Components, 1 do
 end
 
 function LoadDefaultModel(malePed, cb)
-
-  
   local characterModel
-
   if malePed then
     characterModel = GetHashKey('mp_m_freemode_01')
   else
@@ -249,9 +246,7 @@ AddEventHandler('skinchanger:loadDefaultModel', function(loadMale, cb)
 end)
 
 AddEventHandler('skinchanger:getData', function(cb)
-
   local components = json.decode(json.encode(Components))
-
   for k,v in pairs(Character) do
     for i=1, #components, 1 do
       if k == components[i].name then
@@ -261,12 +256,10 @@ AddEventHandler('skinchanger:getData', function(cb)
       end
     end
   end
-
   cb(components, GetMaxVals())
 end)
 
 AddEventHandler('skinchanger:change', function(key, val)
-
   Character[key] = val
 
   if key == 'sex' then
@@ -382,7 +375,6 @@ AddEventHandler('skinchanger:loadClothes', function(playerSkin, clothesSkin)
   LastSex = playerSkin['sex']
 
   Citizen.CreateThread(function()
-
     while not HasModelLoaded(characterModel) do
       RequestModel(characterModel)
       Citizen.Wait(0)
